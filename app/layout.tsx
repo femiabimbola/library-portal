@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ReactNode } from "react";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -22,19 +23,15 @@ export const metadata: Metadata = {
   title: "The Library Portal",
   description: "Developed by Femi Abimbola",
 };
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+ 
+const RootLayout = ({children}: {children: ReactNode}) => {
   return (
     <html lang="en">
-      <body
-        className={`${ibmPlexSans.className} ${bebasNeue.variable} antialiased`}
-      >
+      <body className={`${ibmPlexSans.className} ${bebasNeue.variable} antialiased`}>
         {children}
       </body>
     </html>
   );
 }
+
+export default RootLayout;
