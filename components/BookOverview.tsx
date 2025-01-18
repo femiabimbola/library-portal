@@ -1,11 +1,15 @@
 import React from 'react'
 
-const BookOverview = () => {
+const BookOverview = ({title, author, genre, rating, total_copies, available_copies,description, color, cover} : Book) => {
   return (
     <section className="book-overview">
       <div className="flex flex-1 flex-col gap-5">
-        BookOverview
-        <h1>A Long book title</h1>
+        <h1>{title}</h1>
+        <div className='book-info'>
+          <p>
+            By <span>{author}</span>
+          </p>
+        </div>
       </div>
         
     </section>
