@@ -62,8 +62,8 @@ export const sampleBooks = [
     author: "Matt Haig",
     genre: "Fantasy / Fiction",
     rating: 4.6,
-    totalCopies: 20,
-    availableCopies: 10,
+    total_copies: 20,
+    available_copies: 10,
     description:
       "A dazzling novel about all the choices that go into a life well lived, The Midnight Library tells the story of Nora Seed as she finds herself between life and death.",
     coverColor: "#1c1f40",
@@ -78,8 +78,8 @@ export const sampleBooks = [
     author: "James Clear",
     genre: "Self-Help / Productivity",
     rating: 4.9,
-    totalCopies: 99,
-    availableCopies: 50,
+    total_copies: 99,
+    available_copies: 50,
     description:
       "A revolutionary guide to making good habits, breaking bad ones, and getting 1% better every day.",
     coverColor: "#fffdf6",
