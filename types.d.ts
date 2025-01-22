@@ -40,3 +40,10 @@ interface BorrowBookParams {
   bookId: string;
   userId: string;
 }
+
+interface BookCoverProps {
+  className?: string;
+  variant?: BookCoverVariant;
+  coverColor: string;
+  coverImage: string;
+}
