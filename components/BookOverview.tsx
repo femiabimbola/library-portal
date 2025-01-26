@@ -41,6 +41,7 @@ const BookOverview = ({
             Available Books <span>{available_copies}</span>
           </p>
         </div>
+        
         <p className="book-description">{description}</p>
 
         <Button className="book-overview_btn">
