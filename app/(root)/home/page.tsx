@@ -5,7 +5,7 @@ import { sampleBooks } from '@/constants'
 const Home = () => {
   return (
     <>
-    <BookOverview { ...sampleBooks[0]} />
+    <BookOverview { ...sampleBooks[1]} />
 
     <BookList 
       title="Latest Books"

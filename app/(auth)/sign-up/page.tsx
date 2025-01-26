@@ -1,8 +1,16 @@
+import AuthForm from "@/components/AuthForm"
+import { signInSchema } from "@/lib/validations"
 
 
 const SignUpPage = () => {
   return (
-    <div>page</div>
+    <AuthForm type="SIGN_UP" schema={signInSchema}  
+    // onSubmit={() => void} 
+    defaultValues={{
+      email: "",
+      password: "",
+    }}
+    />
   )
 }
 
