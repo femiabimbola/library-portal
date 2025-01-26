@@ -82,12 +82,12 @@ const AuthForm = <T extends FieldValues>({
                   <FormControl>
                   {field.name === "universityCard" ? (
                       <FileUpload
-                        type="image"
-                        accept="image/*"
-                        placeholder="Upload your ID"
-                        folder="ids"
-                        variant="dark"
-                        onFileChange={field.onChange}
+                        // type="image"
+                        // accept="image/*"
+                        // placeholder="Upload your ID"
+                        // folder="ids"
+                        // variant="dark"
+                        // onFileChange={field.onChange}
                       />
                     ) : (
                       <Input
@@ -104,6 +104,10 @@ const AuthForm = <T extends FieldValues>({
               )}
             />
           ))}
+
+          <Button type="submit" className="form-btn">
+            {isSignIn ? "Sign In" : "Sign Up"}
+          </Button>
         </form>
       </Form>
       <p className="text-center text-base font-medium">

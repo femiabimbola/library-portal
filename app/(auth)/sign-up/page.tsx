@@ -1,16 +1,21 @@
 "use client"
 
 import AuthForm from "@/components/AuthForm"
-import { signInSchema } from "@/lib/validations"
+import { signUpSchema } from "@/lib/validations"
 
 
 const SignUpPage = () => {
   return (
-    <AuthForm type="SIGN_UP" schema={signInSchema}  
+    <AuthForm type="SIGN_UP" 
+    schema={signUpSchema}  
     // onSubmit={() => void} 
+  
     defaultValues={{
       email: "",
       password: "",
+      fullName: "",
+      universityId: 0,
+      universityCard: "",
     }}
     />
   )
