@@ -49,8 +49,12 @@
     @apply flex flex-row items-center gap-1 max-xs:justify-center;
   }
 
-  .book-btn {
+  .book-btn2 {
     @apply bg-dark-600 mt-3 min-h-14 w-full font-bebas-neue text-base text-primary;
+  }
+
+  .book-btn {
+    @apply mt-3 min-h-12 w-full font-bebas-neue text-base tracking-wider;
   }
 
   /* Borrowed Book */
