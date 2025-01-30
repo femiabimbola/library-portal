@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import FileUpload from "@/components/FileUpload";
+import FileUpload from "@/components/ImageUpload";
 
 //  T is generic, it can take  the form of whatever is passed into it
 // T is the default values we are passing
