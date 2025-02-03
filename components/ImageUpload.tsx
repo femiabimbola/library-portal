@@ -40,7 +40,7 @@ interface Props {
   value?: string;
 }
 
-const ImageUpload = ({ value }: Props) => {
+const ImageUpload = ({ value, variant}: Props) => {
   const ikUploadRef = useRef(null);
   const [progress, setProgress] = useState(0);
   const [file, setFile] = useState<{ filePath: string | null }>({
@@ -72,7 +72,9 @@ const ImageUpload = ({ value }: Props) => {
         className="hidden"
       />
 
-      <button className={"upload-btn"}>
+      <button className={"upload-btn"}
+        onClick={() => {}}
+      >
         <Image
           src="/icons/upload.svg"
           alt="upload-icon"
@@ -80,10 +82,19 @@ const ImageUpload = ({ value }: Props) => {
           height={20}
           className="object-contain"
         />
-        <p className="text-base text-light-100"> Upload a File</p>
+        <p className="text-base text-light-100"> Upload a File </p>
 
         {file && <p className="upload-filename">{file.filePath}</p>}
       </button>
+
+      {file && (
+         <IKImage
+            alt={file.filePath}
+            path={file.filePath} width={500} height={300}
+          />
+      )}
+
+      
     </ImageKitProvider>
   );
 };
