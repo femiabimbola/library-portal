@@ -1,5 +1,7 @@
 "use client";
 
+
+// started at 1:41
 import { IKImage, IKVideo, ImageKitProvider, IKUpload } from "imagekitio-next";
 import config from "@/lib/config";
 import { useRef, useState } from "react";
@@ -14,7 +16,6 @@ const {
 const authenticator = async () => {
   try {
     const response = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`);
-
     if (!response.ok) {
       const errorText = await response.text();
       throw new Error(
@@ -40,12 +41,22 @@ interface Props {
   value?: string;
 }
 
-const ImageUpload = ({ value, variant}: Props) => {
+const ImageUpload = ({  type,
+  accept,
+  placeholder,
+  folder,
+  variant,
+  onFileChange,
+  value}: Props) => {
   const ikUploadRef = useRef(null);
   const [progress, setProgress] = useState(0);
-  const [file, setFile] = useState<{ filePath: string | null }>({
-    filePath: value ?? null,
+  // const [file, setFile] = useState<{ filePath: string | null }>({
+  //   filePath: value ?? null,
+  // });
+ const [file, setFile] = useState<{ filePath?: string  }>({
+    filePath: value ,
   });
+
 
   const onError = () => {};
   const onSuccess = () => {};
@@ -61,7 +72,8 @@ const ImageUpload = ({ value, variant}: Props) => {
         onError={onError}
         onSuccess={onSuccess}
         useUniqueFileName={true}
-        validateFile={onValidate}
+        fileName="test-upload.png"
+        // validateFile={onValidate}
         onUploadStart={() => setProgress(0)}
         onUploadProgress={({ loaded, total }) => {
           const percent = Math.round((loaded / total) * 100);
@@ -72,8 +84,14 @@ const ImageUpload = ({ value, variant}: Props) => {
         className="hidden"
       />
 
-      <button className={"upload-btn"}
-        onClick={() => {}}
+      <button className="upload-btn" 
+        onClick={(e) => {
+          e.preventDefault();
+          if(ikUploadRef.current) {
+            // @ts-ignore
+            ikUploadRef.current?.click()
+          }
+        }}
       >
         <Image
           src="/icons/upload.svg"
@@ -90,7 +108,8 @@ const ImageUpload = ({ value, variant}: Props) => {
       {file && (
          <IKImage
             alt={file.filePath}
-            path={file.filePath} width={500} height={300}
+            path={file.filePath} 
+            width={500} height={300}
           />
       )}
 
