@@ -53,13 +53,18 @@ const ImageUpload = ({  type,
   // const [file, setFile] = useState<{ filePath: string | null }>({
   //   filePath: value ?? null,
   // });
- const [file, setFile] = useState<{ filePath?: string  }>({
-    filePath: value ,
-  });
+ const [file, setFile] = useState<{ filePath : string } | null>(null);
 
 
-  const onError = () => {};
-  const onSuccess = () => {};
+
+  const onError = (error: any) => {
+    console.log(error)
+  };
+
+  const onSuccess = ( res:any) => {
+    setFile(res)
+    onFileChange(res.filePath);
+  };
 
   return (
     <ImageKitProvider
@@ -84,10 +89,12 @@ const ImageUpload = ({  type,
         className="hidden"
       />
 
+        {/* To trigger the upload */}
       <button className="upload-btn" 
         onClick={(e) => {
-          e.preventDefault();
+          e.preventDefault(); //stop browser from reloading
           if(ikUploadRef.current) {
+            // It click the above component
             // @ts-ignore
             ikUploadRef.current?.click()
           }
@@ -105,11 +112,12 @@ const ImageUpload = ({  type,
         {file && <p className="upload-filename">{file.filePath}</p>}
       </button>
 
+
       {file && (
          <IKImage
             alt={file.filePath}
             path={file.filePath} 
-            width={500} height={300}
+            width={500} height={500}
           />
       )}
 

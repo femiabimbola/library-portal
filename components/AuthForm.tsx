@@ -87,7 +87,7 @@ const AuthForm = <T extends FieldValues>({
                         // placeholder="Upload your ID"
                         // folder="ids"
                         // variant="dark"
-                        // onFileChange={field.onChange}
+                        onFileChange={field.onChange}
                       />
                     ) : (
                       <Input
