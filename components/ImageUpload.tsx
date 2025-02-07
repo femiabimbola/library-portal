@@ -62,6 +62,7 @@ const ImageUpload = ({  type,
 
   const onError = (error: any) => {
     console.log(error)
+    // console.log(publicKey)
     toast({
       title: "Image failed to upload",
       description: `Image upload failed`,
@@ -77,6 +78,7 @@ const ImageUpload = ({  type,
       description: `*${res.filePath} uploaded successfully`,
     })
   };
+
 
   return (
     <ImageKitProvider
@@ -129,7 +131,7 @@ const ImageUpload = ({  type,
          <IKImage
             alt={file.filePath}
             path={file.filePath} 
-            width={500} height={500}
+            width={500} height={300}
           />
       )}
 
