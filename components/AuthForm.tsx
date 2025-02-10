@@ -15,15 +15,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
 import {
-  Form,
-  FormControl,
-  FormField,
+  Form, FormControl,  FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from "@/hooks/use-toast";
 import FileUpload from "@/components/ImageUpload";
 
 //  T is generic, it can take  the form of whatever is passed into it
@@ -31,7 +30,7 @@ import FileUpload from "@/components/ImageUpload";
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
   defaultValues: T;
-  onSubmit?: (data: T) => Promise<{ success: boolean; error?: string }>;
+  onSubmit: (data: T) => Promise<{ success: boolean; error?: string }>;
   type: "SIGN_IN" | "SIGN_UP";
 }
 
@@ -52,8 +51,25 @@ const AuthForm = <T extends FieldValues>({
   });
 
   const handleSubmit: SubmitHandler<T> = async (data) => {
-     
+    const result = await onSubmit(data);
+    if (result.success) {
+      toast({
+        title: "Success",
+        description: isSignIn
+          ? "You have successfully signed in."
+          : "You have successfully signed up.",
+      });
+
+      router.push("/");
+    } else {
+      toast({
+        title: `Error ${isSignIn ? "signing in" : "signing up"}`,
+        description: result.error ?? "An error occurred.",
+        variant: "destructive",
+      });
+    }
   }
+
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-2xl font-semibold text-white">
@@ -82,11 +98,11 @@ const AuthForm = <T extends FieldValues>({
                   <FormControl>
                   {field.name === "universityCard" ? (
                       <FileUpload
-                        // type="image"
-                        // accept="image/*"
-                        // placeholder="Upload your ID"
-                        // folder="ids"
-                        // variant="dark"
+                        type="image"
+                        accept="image/*"
+                        placeholder="Upload your ID"
+                        folder="ids"
+                        variant="dark"
                         onFileChange={field.onChange}
                       />
                     ) : (

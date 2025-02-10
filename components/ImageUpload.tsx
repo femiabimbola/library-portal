@@ -59,7 +59,6 @@ const ImageUpload = ({  type,
  const { toast } = useToast()
 
 
-
   const onError = (error: any) => {
     console.log(error)
     // console.log(publicKey)
