@@ -18,6 +18,9 @@ const Header = () => {
           <Link href='/' className={cn("text-base cursor-pointer capitalize", pathname==='/library' ? 'text-light-200' : 'text-lime-100')}>       Library 
           </Link>
         </li>
+        <li>
+          <Link href={"/my-profile"}></Link>
+        </li>
       </ul>
    </header>
   )
