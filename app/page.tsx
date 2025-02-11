@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <main className="root-container">
       <div className="mx-auto max-w-7xl">
-        <Header />
+        {/* <Header /> */}
         <p> The home page</p>
       </div>
     </main>
