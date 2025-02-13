@@ -61,10 +61,9 @@ const ImageUpload = ({  type,
 
   const onError = (error: any) => {
     console.log(error)
-    // console.log(publicKey)
     toast({
       title: "Image failed to upload",
-      description: `Image upload failed`,
+      description: `${error.message}`,
       variant: "destructive"
     })
   };
