@@ -1,11 +1,44 @@
+import { db } from "@/database/drizzle"
 import { serve } from "@upstash/workflow/nextjs"
+import { users } from "@/database/schema";
+import { eq } from "drizzle-orm";
 
 type InitialData = {
   email: string
+  fullName:string
+}
+
+type UserState = 'non-active' | 'active'
+
+const ONE_DAY_IN_MS =  60 * 60 * 24 * 1000
+const THREE_DAYS_IN_MS = 3 * ONE_DAY_IN_MS;
+const THIRTY_DAYS_IN_MS = 30 * ONE_DAY_IN_MS;
+
+// It will return a promise in userstate format
+const getUserState = async (email: string): Promise<UserState> => {
+  const user = await db
+  .select().from(users)
+  .where(eq(users.email, email))
+  .limit(1);
+
+  if (user.length === 0) return "non-active";
+
+  const lastActivityDate = new Date(user[0].lastActivityDate!);
+  
+  const now = new Date();
+  const timeDifference = now.getTime() - lastActivityDate.getTime();
+  if (
+    timeDifference > THREE_DAYS_IN_MS &&
+    timeDifference <= THIRTY_DAYS_IN_MS
+  ) {
+    return "non-active";
+  }
+
+  return "active";
 }
 
 export const { POST } = serve<InitialData>(async (context) => {
-  const { email } = context.requestPayload
+  const { email, fullName } = context.requestPayload
 
   await context.run("new-signup", async () => {
     await sendEmail("Welcome to the platform", email)
@@ -15,7 +48,7 @@ export const { POST } = serve<InitialData>(async (context) => {
 
   while (true) {
     const state = await context.run("check-user-state", async () => {
-      return await getUserState()
+      return await getUserState(email)
     })
 
     if (state === "non-active") {
@@ -37,9 +70,9 @@ async function sendEmail(message: string, email: string) {
   console.log(`Sending ${message} email to ${email}`)
 }
 
-type UserState = "non-active" | "active"
 
-const getUserState = async (): Promise<UserState> => {
-  // Implement user state logic here
-  return "non-active"
-}
+
+// const getUserState = async (): Promise<UserState> => {
+//   // Implement user state logic here
+//   return "non-active"
+// }
