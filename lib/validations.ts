@@ -19,9 +19,10 @@ export const bookSchema = z.object({
   author: z.string().trim().min(2).max(100),
   genre: z.string().trim().min(2).max(50),
   rating: z.coerce.number().min(1).max(5),
+  // coerce turns into number and  lower than
   totalCopies: z.coerce.number().int().positive().lte(10000),
   coverUrl: z.string().nonempty(),
-  coverColor: z
+  coverColor: z 
     .string()
     .trim()
     .regex(/^#[0-9A-F]{6}$/i),
