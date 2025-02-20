@@ -52,9 +52,11 @@ const FileUpload = ({  type,
   value}: Props) => {
   const ikUploadRef = useRef(null);
   const [progress, setProgress] = useState(0);
-  // const [file, setFile] = useState<{ filePath: string | null }>({
-  //   filePath: value ?? null,
-  // });
+  const styles = { 
+    button: variant === 'dark'? 'bg-dark-300' :'bg-light-600 border-gray-100 border',
+    placeholder:variant=== 'dark' ? 'text-light-100' : 'text-slate-500',
+    text: variant === 'dark' ? 'text-light-100' : 'text-dark-500'
+  }
  const [file, setFile] = useState<{ filePath : string } | null>(null);
  const { toast } = useToast()
 
@@ -62,7 +64,7 @@ const FileUpload = ({  type,
   const onError = (error: any) => {
     console.log(error)
     toast({
-      title: "Image failed to upload",
+      title: `${type} upload failed`,
       description: `${error.message}`,
       variant: "destructive"
     })
@@ -72,9 +74,34 @@ const FileUpload = ({  type,
     setFile(res)
     onFileChange(res.filePath);
     toast({
-      title: "Image Uploaded Successfull",
+      title: `${type} Uploaded Successfully`,
       description: `*${res.filePath} uploaded successfully`,
     })
+  };
+
+  const onValidate = (file: File) => {
+    if (type === "image") {
+      if (file.size > 20 * 1024 * 1024) {
+        toast({
+          title: "File size too large",
+          description: "Please upload a file that is less than 20MB in size",
+          variant: "destructive",
+        });
+
+        return false;
+      }
+    } else if (type === "video") {
+      if (file.size > 50 * 1024 * 1024) {
+        toast({
+          title: "File size too large",
+          description: "Please upload a file that is less than 50MB in size",
+          variant: "destructive",
+        });
+        return false;
+      }
+    }
+
+    return true;
   };
 
 
