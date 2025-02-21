@@ -7,6 +7,7 @@ import config from "@/lib/config";
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { useToast } from "@/hooks/use-toast"
+import { cn } from "@/lib/utils";
 
 
 const {
@@ -81,26 +82,25 @@ const FileUpload = ({  type,
 
   const onValidate = (file: File) => {
     if (type === "image") {
-      if (file.size > 20 * 1024 * 1024) {
+      if (file.size > 5 * 1024 * 1024) {
         toast({
           title: "File size too large",
-          description: "Please upload a file that is less than 20MB in size",
+          description: "Please upload a file that is less than 5  MB in size",
           variant: "destructive",
         });
 
         return false;
       }
     } else if (type === "video") {
-      if (file.size > 50 * 1024 * 1024) {
+      if (file.size > 30 * 1024 * 1024) {
         toast({
           title: "File size too large",
-          description: "Please upload a file that is less than 50MB in size",
+          description: "Please upload a file that is less than 30MB in size",
           variant: "destructive",
         });
         return false;
       }
     }
-
     return true;
   };
 
@@ -116,8 +116,8 @@ const FileUpload = ({  type,
         onError={onError}
         onSuccess={onSuccess}
         useUniqueFileName={true}
-        fileName="test-upload.png"
-        // validateFile={onValidate}
+        // fileName="test-upload.png"
+        validateFile={onValidate}
         onUploadStart={() => setProgress(0)}
         onUploadProgress={({ loaded, total }) => {
           const percent = Math.round((loaded / total) * 100);
@@ -129,7 +129,7 @@ const FileUpload = ({  type,
       />
 
         {/* To trigger the upload */}
-      <button className="upload-btn" 
+      <button className={cn("upload-btn", styles.button)}
         onClick={(e) => {
           e.preventDefault(); //stop browser from reloading
           if(ikUploadRef.current) {
@@ -146,18 +146,37 @@ const FileUpload = ({  type,
           height={20}
           className="object-contain"
         />
-        <p className="text-base text-light-100"> Upload a File </p>
+        <p className={cn("text-base", styles.placeholder)}> {placeholder}</p>
 
-        {file && <p className="upload-filename">{file.filePath}</p>}
+        {/* {file && <p className="upload-filename">{file.filePath}</p>} */}
+
+        {file && <p className={cn('upload-filename', styles.text)}>{file.filePath}</p>} 
       </button>
+
+      {progress > 0 && progress !== 100 && (
+        <div className="w-full rounded-full bg-green-200">
+          <div className="progress" style={{ width: `${progress}%` }}>
+            {progress}%
+          </div>
+        </div>
+      )}
 
 
       {file && (
-         <IKImage
-            alt={file.filePath}
-            path={file.filePath} 
-            width={500} height={300}
+        (type === 'image' ? (
+          <IKImage
+          alt={file.filePath}
+          path={file.filePath} 
+          width={500} height={300}
+        />
+        ): type === "video" ? (
+          <IKVideo 
+          path={file.filePath}
+          controls={true}
+          className="h-96 w-full rounded-xl"
           />
+        ) : null)
+        
       )}
 
       
