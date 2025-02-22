@@ -16,11 +16,12 @@ const Dashboard = async() => {
 
   return (
     <>
-    <BookOverview { ...latestBooks[0]} />
+    {/* <BookOverview { ...latestBooks[0]} userId={session?.user?.id as string}/> */}
 
+    <BookOverview { ...latestBooks[0]} />
     <BookList 
       title="Latest Books"
-      books ={latestBooks}
+      books ={latestBooks.slice(1)}
       containerClassName ="mt-28"
     />
     </>
