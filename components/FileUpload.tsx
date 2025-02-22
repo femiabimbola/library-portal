@@ -53,6 +53,7 @@ const FileUpload = ({  type,
   value}: Props) => {
   const ikUploadRef = useRef(null);
   const [progress, setProgress] = useState(0);
+  
   const styles = { 
     button: variant === 'dark'? 'bg-dark-300' :'bg-light-600 border-gray-100 border',
     placeholder:variant=== 'dark' ? 'text-light-100' : 'text-slate-500',
