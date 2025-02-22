@@ -1,33 +1,5 @@
 [
   {
-      "id": "9084986f-456c-449b-ae6e-59ef1f26b129",
-      "title": "CSS in Depth",
-      "author": "Keith J. Grant",
-      "genre": "Web Development",
-      "rating": 4,
-      "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_zIgYlIxcY.png",
-      "coverColor": "#1e2a4b",
-      "description": "CSS in Depth by Keith J. Grant is a comprehensive guide for web developers who want to go beyond the basics of CSS and master the intricacies of styling web pages. The book is designed for intermediate to advanced developers who are already familiar with CSS but want to deepen their understanding and leverage its full potential.",
-      "totalCopies": 18,
-      "availableCopies": 16,
-      "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_O-O0Z_Vz5.png",
-      "summary": "CSS in Depth starts by reviewing the basic principles of CSS, then quickly moves on to more advanced concepts. Grant emphasizes the importance of understanding the underlying mechanics of CSS properties like layout, box model, and positioning. Readers learn how to use these tools more effectively, making their code more predictable and easier to debug.\n\nThe book dedicates significant time to discussing modern layout systems, especially Flexbox and CSS Grid. These powerful tools enable developers to create complex, responsive designs with minimal code. Grant explains how to use them in different contexts, providing practical examples of when and why they are useful.\n\nOne of the book’s highlights is its in-depth coverage of animations and transitions. Readers learn how to add dynamic effects to their web pages without relying on JavaScript. This is especially useful for creating smooth, interactive designs that improve user experience.\n\nThe book also discusses CSS preprocessors and methodologies like BEM (Block Element Modifier), teaching developers how to structure their stylesheets for larger projects. Grant encourages best practices such as keeping CSS DRY (Don’t Repeat Yourself) and modularizing code.\n\nBy the end of the book, readers will have the knowledge and confidence to tackle complex CSS challenges and create stunning web interfaces with efficiency and elegance."
-  },
-  {
-      "id": "350c3bc8-a5cc-45a3-ba16-97b93ed056b0",
-      "title": "HTML and CSS: Design and Build Websites",
-      "author": "Jon Duckett",
-      "genre": "Web Development",
-      "rating": 5,
-      "coverUrl": "https://ik.imagekit.io/pwd17k26p/books/covers/file_1pCoBDI11.png",
-      "coverColor": "#3a2931",
-      "description": "Whether you’re a complete beginner or someone looking to brush up on HTML and CSS, this book provides a solid foundation and practical skills that can be applied immediately to real-world projects.",
-      "totalCopies": 45,
-      "availableCopies": 45,
-      "videoUrl": "https://ik.imagekit.io/pwd17k26p/books/videos/file_MONyhmpr4V.png",
-      "summary": "HTML and CSS: Design and Build Websites starts with an introduction to HTML, covering the basic building blocks of a webpage, including elements like headings, paragraphs, links, and images. Duckett carefully explains the structure and syntax of HTML, teaching readers how to write and organize their code.\n\nThe book then transitions to CSS, showing readers how to apply styles to their HTML elements. Topics such as fonts, colors, borders, padding, and margins are introduced in clear, easy-to-understand terms. Duckett uses plenty of visual examples to help readers see the immediate impact of the styles they apply.\n\nAs the book progresses, readers dive deeper into layout techniques, learning about the box model, positioning, floats, and flexible layouts with CSS Flexbox. The concept of responsive design is also covered, teaching readers how to make their websites adapt to different screen sizes and devices.\n\nThroughout, the book is full of practical tips and techniques to create beautiful, functional websites. Duckett’s clear explanations and colorful layout make complex topics easier to understand, making this book a perfect guide for anyone starting their web development journey."
-  },
-  {
       "id": "b514f922-a715-45ec-846e-e51d40e15aa2",
       "title": "System Design Interview",
       "author": "Alex Xu",
