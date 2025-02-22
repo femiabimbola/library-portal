@@ -1,22 +1,30 @@
+import { auth } from '@/auth'
 import BookList from '@/components/BookList'
 import BookOverview from '@/components/BookOverview'
 import { sampleBooks } from '@/constants'
 import { db } from '@/database/drizzle'
-import { users } from '@/database/schema'
+import { books, users } from '@/database/schema'
+import { desc } from 'drizzle-orm'
 
-const Home = async() => {
+const Dashboard = async() => {
+  const session = await auth()
+
   const result = await db.select().from(users);
+
+  const latestBooks = (await db.select().from(books).limit(10).orderBy(desc(books.createdAt))) as Book[]
+
+
   return (
     <>
-    <BookOverview { ...sampleBooks[1]} />
+    <BookOverview { ...latestBooks[0]} />
 
     <BookList 
       title="Latest Books"
-      books ={sampleBooks}
-      containerClassName = "mt-28"
+      books ={latestBooks}
+      containerClassName ="mt-28"
     />
     </>
   )
 }
 
-export default Home
+export default Dashboard;

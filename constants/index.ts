@@ -62,8 +62,8 @@ export const sampleBooks = [
     author: "Matt Haig",
     genre: "Fantasy / Fiction",
     rating: 4.6,
-    total_copies: 20,
-    available_copies: 10,
+    totalCopies: 20,
+    availableCopies: 10,
     description:
       "A dazzling novel about all the choices that go into a life well lived, The Midnight Library tells the story of Nora Seed as she finds herself between life and death.",
     coverColor: "#1c1f40",
@@ -78,8 +78,8 @@ export const sampleBooks = [
     author: "James Clear",
     genre: "Self-Help / Productivity",
     rating: 4.9,
-    total_copies: 99,
-    available_copies: 50,
+    totalCopies: 99,
+    availableCopies: 50,
     description:
       "A revolutionary guide to making good habits, breaking bad ones, and getting 1% better every day.",
     coverColor: "#fffdf6",
@@ -94,8 +94,8 @@ export const sampleBooks = [
     author: "Kyle Simpson",
     genre: "Computer Science / JavaScript",
     rating: 4.7,
-    total_copies: 9,
-    available_copies: 5,
+    totalCopies: 9,
+    availableCopies: 5,
     description:
       "An essential guide to understanding the core mechanisms of JavaScript, focusing on scope and closures.",
     coverColor: "#f8e036",
@@ -111,8 +111,8 @@ export const sampleBooks = [
     author: "Paulo Coelho",
     genre: "Philosophy / Adventure",
     rating: 4.5,
-    total_copies: 78,
-    available_copies: 50,
+    totalCopies: 78,
+    availableCopies: 50,
     description:
       "A magical tale of Santiago, an Andalusian shepherd boy, who embarks on a journey to find a worldly treasure.",
     coverColor: "#ed6322",

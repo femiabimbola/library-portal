@@ -1,11 +1,11 @@
 interface Book {
-  id: number;
+  id: string;
   title: string;
   author: string;
   genre: string;
   rating: number;
-  total_copies?: number;
-  available_copies: number;
+  totalCopies?: number;
+  availableCopies: number;
   description: string;
   coverColor: string;
   coverUrl: string;
