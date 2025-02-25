@@ -40,9 +40,9 @@ export const BorrowBook = ({userId, bookId, borrowingEligibility:{ isEligible, m
  }
   return (
     <div>
-      <Button className="book-overview_btn">
+      <Button className="book-overview_btn" onClick={handleBorrow} disabled={borrowing}>
         <Image src={"/icons/book.svg"} alt="book" width={20} height={20} />
-        <p className="font-bebas-neue text-xl text-dark-100"> Borrow Book</p>
+        <p className="font-bebas-neue text-xl text-dark-100">{borrowing ? 'Borrowing....' : 'Borrow Book'}</p>
       </Button>
     </div>
   );
